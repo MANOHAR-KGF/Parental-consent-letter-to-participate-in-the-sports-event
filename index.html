@@ -3,261 +3,523 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಲು ಪಾಲಕರ ಒಪ್ಪಿಗೆ ಪತ್ರ</title>
+    <title>ಪಾಠ ವೀಕ್ಷಣಾ ಮಾದರಿ ನಮೂನೆ - HM Lesson Observation</title>
     <style>
-        @page {
-            size: A4 portrait;
-            margin: 8mm;
+        @media print{
+          .no-print{
+            display:none !important;
+          }
         }
+
+        :root {
+            --primary-color: #0f4c81;
+            --secondary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --bg-color: #eef2f7;
+            --card-bg: #ffffff;
+            --border-color: #cbd5e1;
+            --text-color: #1e293b;
+            --header-gradient: linear-gradient(135deg, #0f4c81 0%, #1d4ed8 100%);
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Nudi 01', 'Arial', sans-serif, Kannada;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 950px;
+            background: var(--card-bg);
             padding: 0;
-            color: #000;
-            background-color: #f0f2f5;
-            line-height: 1.4;
-        }
-        .page {
-            width: 210mm;
-            height: 297mm;
-            padding: 6mm 10mm;
-            margin: 0 auto;
-            background: white;
-            box-sizing: border-box;
-            position: relative;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(15, 76, 129, 0.15);
+            border: 3px solid var(--primary-color);
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .form-section {
-            height: 138mm;
-            box-sizing: border-box;
+
+        /* Card Header Style */
+        .card-header {
+            background: var(--header-gradient);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .card-header .subtitle {
+            font-size: 16px;
+            color: #e0f2fe;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Card Body Style */
+        .card-body {
+            padding: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .form-group {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            border: 2px solid #2c3e50;
-            padding: 8mm 10mm;
+            margin-bottom: 15px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .form-group:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        input[type="text"], input[type="number"], select, textarea {
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
             background-color: #fff;
+            transition: all 0.3s;
         }
-        .title {
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-bottom: 6px;
-            color: #1a252f;
-        }
-        .to-address {
-            margin-bottom: 6px;
-            font-size: 13px;
-        }
-        .school-name-line {
-            border-bottom: 1px dashed #555;
-            width: 250px;
-            display: inline-block;
-            margin-top: 2px;
-            color: #333;
-            font-size: 12px;
-            padding-bottom: 1px;
-        }
-        .subject {
-            font-weight: bold;
-            margin-bottom: 6px;
-            font-size: 12.5px;
-            text-align: justify;
-        }
-        .content-body {
-            text-align: justify;
-            margin-bottom: 6px;
-            font-size: 12.5px;
-        }
-        input[type="text"] {
-            border: none;
-            border-bottom: 1px dashed #000;
-            font-family: Arial, sans-serif;
-            font-size: 12.5px;
-            padding: 1px 4px;
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--secondary-color);
             outline: none;
-            background: transparent;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
-        input[type="text"]:focus {
-            border-bottom: 1px solid #0056b3;
-            background: #fdfdfd;
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
         }
-        .footer-section {
-            margin-top: 2px;
-            font-size: 12.5px;
+
+        .inline-inputs {
+            display: flex;
+            gap: 10px;
         }
-        .footer-row {
+
+        .inline-inputs > div {
+            flex: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .section-title {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-radius: 6px;
+            margin: 25px 0 15px 0;
+            font-size: 15px;
+            box-shadow: 0 2px 5px rgba(16, 185, 129, 0.2);
+        }
+
+        .signature-section {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 2px dashed #cbd5e1;
         }
-        .scissors-divider {
+
+        .signature-box {
             text-align: center;
-            margin: 3mm 0;
-            font-size: 13px;
-            color: #c0392b;
-            font-weight: bold;
-            letter-spacing: 1px;
+            width: 42%;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
-        .actions {
-            text-align: center;
-            margin: 15px;
-        }
-        .print-btn {
-            background-color: #28a745;
-            color: white;
+
+        .signature-box input {
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 4px;
+            border-bottom: 2px solid var(--primary-color);
+            text-align: center;
+            margin-top: 30px;
+            background: transparent;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 35px;
+            padding: 20px;
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .print-btn:hover {
-            background-color: #218838;
+
+        .btn:active {
+            transform: scale(0.97);
         }
+
+        .btn-print {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background-color: #059669;
+        }
+
+        .btn-save {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background-color: #2563eb;
+        }
+
+        .btn-reset {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background-color: #dc2626;
+        }
+
         @media print {
-            .actions {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: 2px solid #000;
+                max-width: 100%;
+                border-radius: 0;
+            }
+            .card-header {
+                background: #f1f5f9 !important;
+                color: #000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border-bottom: 2px solid #000;
+            }
+            .card-header .subtitle {
+                color: #333 !important;
+            }
+            .section-title {
+                background: #e2e8f0 !important;
+                color: #000 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .action-buttons {
                 display: none;
             }
-            body {
-                background-color: #fff;
+            .form-group {
+                background: transparent !important;
+                border: none;
+                padding: 5px 0;
             }
-            .page {
-                box-shadow: none;
-                margin: 0;
-                padding: 4mm 8mm;
-                height: 297mm;
+            input, select, textarea {
+                border: none;
+                border-bottom: 1px solid #000;
+                border-radius: 0;
+                padding: 2px 0;
+                background: transparent;
+            }
+            textarea {
+                min-height: 40px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="actions">
-        <button class="print-btn" onclick="window.print()">ಪ್ರಿಂಟ್ ಅಥವಾ ಪಿಡಿಎಫ್ ಉಳಿಸಿ (Print / Save as PDF)</button>
+<div class="container desktop-view-mode">
+    <div class="card-header">
+        <h2>ಶಾಲಾ ಮುಖ್ಯ ಗುರುಗಳಿಂದ ಶೈಕ್ಷಣಿಕ ಮೇಲ್ವಿಚಾರಣೆ</h2>
+        <div class="subtitle">ಪಾಠ ವೀಕ್ಷಣಾ ಮಾದರಿ ನಮೂನೆ</div>
     </div>
 
-    <div class="page">
-        <div class="form-section">
-            <div>
-                <div class="title">ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಲು ಪಾಲಕರ ಒಪ್ಪಿಗೆ ಪತ್ರ</div>
-                
-                <div class="to-address">
-                    ಇವರಿಗೆ,<br>
-                    ಮುಖ್ಯೋಪಾಧ್ಯಾಯರು/ದೈಹಿಕ ಶಿಕ್ಷಣ ಶಿಕ್ಷಕರು,<br>
-                    <div class="school-name-line"><input type="text" style="width: 100%; border:none;" placeholder="ಶಾಲೆಯ ಹೆಸರು"></div>
+    <div class="card-body">
+        <form id="observationForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="schoolName">1. ಶಾಲೆಯ ಹೆಸರು:</label>
+                    <input type="text" id="schoolName" name="schoolName" placeholder="ಶಾಲೆಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ">
+                </div>
+                <div class="form-group">
+                    <label for="teacherName">2. ಶಿಕ್ಷಕರ ಹೆಸರು:</label>
+                    <input type="text" id="teacherName" name="teacherName" placeholder="ಶಿಕ್ಷಕರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ">
                 </div>
 
-                <div class="subject">
-                    ವಿಷಯ : <input type="text" style="width: 50px; text-align: center;" value="2026"> - <input type="text" style="width: 50px; text-align: center;" value="2027"> ನೇ ಸಾಲಿನ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಲು ಅನುಮತಿ ನೀಡುವ ಕುರಿತು
+                <div class="form-group">
+                    <label>3. ತರಗತಿ ಹಾಗೂ ವಿಭಾಗ:</label>
+                    <div class="inline-inputs">
+                        <input type="text" id="className" name="className" placeholder="ತರಗತಿ">
+                        <input type="text" id="section" name="section" placeholder="ವಿಭಾಗ">
+                    </div>
                 </div>
 
-                <div class="content-body">
-                    ಶ್ರೀ/ಶ್ರೀಮತಿ <input type="text" style="width: 270px;" placeholder="ಪೋಷಕರ ಹೆಸರು"> ಕುಮಾರ/ಕುಮಾರಿ: <input type="text" style="width: 210px;" placeholder="ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರು"><br>
-                    ನನ್ನ ಮಗ / ಮಗಳಾದ <input type="text" style="width: 90px;" placeholder="ತರಗತಿ"> ನೇ ತರಗತಿಯಲ್ಲಿ ವ್ಯಾಸಂಗ ಮಾಡುತ್ತಿದ್ದು, <input type="text" style="width: 50px; text-align: center;" value="2026"> - <input type="text" style="width: 50px; text-align: center;" value="2027"> ನೇ ಸಾಲಿನ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ <input type="text" style="width: 160px;" placeholder="ಆಟದ ಹೆಸರು"> ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಭಾಗವಹಿಸಲು ತರಬೇತಿ ಪಡೆಯಲು ಸ್ವ ಇಚ್ಚೆಯಿಂದ ಅನುಮತಿಸಲಾಗಿದೆ.<br>
-                    ಯಾವುದೇ ಘಟನೆಯ ಸಂದರ್ಭದಲ್ಲಿ ಸಂಪೂರ್ಣ ಜವಾಬ್ದಾರಿಯನ್ನು ನಮ್ಮ ಮೇಲೆ ತೆಗೆದುಕೊಳ್ಳಲು ನಾವು ಒಪ್ಪಿಕೊಂಡಿದ್ದೇವೆ ಹಾಗೂ ಅವನು ಅಥವಾ ಅವಳು ಯಾವುದೇ ಪ್ರಮುಖ ಅನಾರೋಗ್ಯದಿಂದ ಬಳಲುತ್ತಿಲ್ಲ ಎಂದು ನಾವು ಘೋಷಿಸುತ್ತೇನೆ.
+                <div class="form-group">
+                    <label>4. ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಂಖ್ಯೆ:</label>
+                    <div class="inline-inputs">
+                        <input type="text" id="enrollment" name="enrollment" placeholder="ದಾಖಲಾತಿ">
+                        <input type="text" id="attendance" name="attendance" placeholder="ಹಾಜರಾತಿ">
+                        <input type="text" id="percentage" name="percentage" placeholder="ಶೇಕಡಾವಾರು %">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>5. ಬೋಧನಾ ವಿಷಯ ಹಾಗೂ ಅವಧಿ:</label>
+                    <div class="inline-inputs">
+                        <input type="text" id="subject" name="subject" placeholder="ವಿಷಯ">
+                        <input type="text" id="period" name="period" placeholder="ಅವಧಿ">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lessonName">6. ಪಾಠದ ಹೆಸರು:</label>
+                    <input type="text" id="lessonName" name="lessonName" placeholder="ಪಾಠದ ಹೆಸರು">
                 </div>
             </div>
 
-            <div class="footer-section">
-                <div class="footer-row">
-                    <div>ವಿದ್ಯಾರ್ಥಿಯ ಸಹಿ : <input type="text" style="width: 130px;"></div>
-                    <div>ಪೋಷಕರ ಸಹಿ : <input type="text" style="width: 130px;"></div>
-                </div>
-                <div class="footer-row">
-                    <div>ಆಧಾರ್ ಕಾರ್ಡ್ ಸಂಖ್ಯೆ : <input type="text" style="width: 150px;"></div>
-                    <div>ಪೋಷಕರ ವಿಳಾಸ : <input type="text" style="width: 190px;"></div>
-                </div>
-                <div>
-                    ವೈಯಕ್ತಿಕ ದೂರವಾಣಿ ಸಂಖ್ಯೆ : <input type="text" style="width: 170px;">
-                </div>
-            </div>
-        </div>
-
-        <div class="scissors-divider">
-            &#9986;&#65039; ಇಲ್ಲಿ ಕತ್ತರಿಸಿ (Cut Here) ----------------------------------------------------------------------------------------------------------------
-        </div>
-
-        <div class="form-section">
-            <div>
-                <div class="title">ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಲು ಪಾಲಕರ ಒಪ್ಪಿಗೆ ಪತ್ರ</div>
-                
-                <div class="to-address">
-                    ಇವರಿಗೆ,<br>
-                    ಮುಖ್ಯೋಪಾಧ್ಯಾಯರು/ದೈಹಿಕ ಶಿಕ್ಷಣ ಶಿಕ್ಷಕರು,<br>
-                    <div class="school-name-line"><input type="text" style="width: 100%; border:none;" placeholder="ಶಾಲೆಯ ಹೆಸರು"></div>
-                </div>
-
-                <div class="subject">
-                    ವಿಷಯ : <input type="text" style="width: 50px; text-align: center;" value="2026"> - <input type="text" style="width: 50px; text-align: center;" value="2027"> ನೇ ಸಾಲಿನ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ ಭಾಗವಹಿಸಲು ಅನುಮತಿ ನೀಡುವ ಕುರಿತು
-                </div>
-
-                <div class="content-body">
-                    ಶ್ರೀ/ಶ್ರೀಮತಿ <input type="text" style="width: 270px;" placeholder="ಪೋಷಕರ ಹೆಸರು"> ಕುಮಾರ/ಕುಮಾರಿ: <input type="text" style="width: 210px;" placeholder="ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರು"><br>
-                    ನನ್ನ ಮಗ / ಮಗಳಾದ <input type="text" style="width: 90px;" placeholder="ತರಗತಿ"> ನೇ ತರಗತಿಯಲ್ಲಿ ವ್ಯಾಸಂಗ ಮಾಡುತ್ತಿದ್ದು, <input type="text" style="width: 50px; text-align: center;" value="2026"> - <input type="text" style="width: 50px; text-align: center;" value="2027"> ನೇ ಸಾಲಿನ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ಕ್ರೀಡಾಕೂಟದಲ್ಲಿ <input type="text" style="width: 160px;" placeholder="ಆಟದ ಹೆಸರು"> ಸ್ಪರ್ಧೆಯಲ್ಲಿ ಭಾಗವಹಿಸಲು ತರಬೇತಿ ಪಡೆಯಲು ಸ್ವ ಇಚ್ಚೆಯಿಂದ ಅನುಮತಿಸಲಾಗಿದೆ.<br>
-                    ಯಾವುದೇ ಘಟನೆಯ ಸಂದರ್ಭದಲ್ಲಿ ಸಂಪೂರ್ಣ ಜವಾಬ್ದಾರಿಯನ್ನು ನಮ್ಮ ಮೇಲೆ ತೆಗೆದುಕೊಳ್ಳಲು ನಾವು ಒಪ್ಪಿಕೊಂಡಿದ್ದೇವೆ ಹಾಗೂ ಅವನು ಅಥವಾ ಅವಳು ಯಾವುದೇ ಪ್ರಮುಖ ಅನಾರೋಗ್ಯದಿಂದ ಬಳಲುತ್ತಿಲ್ಲ ಎಂದು ನಾವು ಘೋಷಿಸುತ್ತೇನೆ.
-                </div>
+            <div class="form-group full-width">
+                <label for="lessonGoal">7. ಪಾಠದ ಉದ್ದೇಶಿತ ಗುರಿ ಹಾಗೂ ಕಲಿಕಾಂಶಗಳು:</label>
+                <textarea id="lessonGoal" name="lessonGoal" placeholder="ಗುರಿ ಮತ್ತು ಕಲಿಕಾಂಶಗಳನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ..."></textarea>
             </div>
 
-            <div class="footer-section">
-                <div class="footer-row">
-                    <div>ವಿದ್ಯಾರ್ಥಿಯ ಸಹಿ : <input type="text" style="width: 130px;"></div>
-                    <div>ಪೋಷಕರ ಸಹಿ : <input type="text" style="width: 130px;"></div>
+            <div class="form-group">
+                <label for="observationTime">8. ತರಗತಿ ಬೋಧನೆ ಅವಲೋಕಿಸಿದ ಸಮಯ (ನಿಮಿಷಗಳಲ್ಲಿ):</label>
+                <input type="text" id="observationTime" name="observationTime" placeholder="ಉದಾ: 45 ನಿಮಿಷಗಳು">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="processNotes">9. ಬೋಧನಾ ಕಲಿಕಾ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ಗಮನಿಸಿದ ಅಂಶಗಳು:</label>
+                <textarea id="processNotes" name="processNotes" placeholder="ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ..."></textarea>
+            </div>
+
+            <div class="section-title">ಪಾಠದ ಬೆಳವಣಿಗೆ</div>
+            
+            <div class="form-group">
+                <label for="motivation">ಅಭಿಪ್ರೇರಣೆ:</label>
+                <input type="text" id="motivation" name="motivation" placeholder="ಅಭಿಪ್ರೇರಣೆಯ ವಿವರ">
+            </div>
+
+            <div class="form-group full-width">
+                <label>ಉದ್ದೇಶಿತ ಸಾಮರ್ಥ್ಯ ಹಾಗೂ ಕಲಿಕಾಂಶಗಳ ವಿವರ:</label>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ತರಗತಿ ಹಂತ</th>
+                            <th>ಒಟ್ಟು ಸಾಮರ್ಥ್ಯಗಳು</th>
+                            <th>ಸಾಧಿಸಿದ ಸಾಮರ್ಥ್ಯಗಳು</th>
+                            <th>ಬಾಕಿಯಿರುವ ಸಾಮರ್ಥ್ಯಗಳು</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ಅ) 1 - 5</td>
+                            <td><input type="text" name="tot_1_5"></td>
+                            <td><input type="text" name="ach_1_5"></td>
+                            <td><input type="text" name="rem_1_5"></td>
+                        </tr>
+                        <tr>
+                            <td>ಆ) 6 - 7</td>
+                            <td><input type="text" name="tot_6_7"></td>
+                            <td><input type="text" name="ach_6_7"></td>
+                            <td><input type="text" name="rem_6_7"></td>
+                        </tr>
+                        <tr>
+                            <td>ಇ) 8 - 10</td>
+                            <td><input type="text" name="tot_8_10"></td>
+                            <td><input type="text" name="ach_8_10"></td>
+                            <td><input type="text" name="rem_8_10"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="supplementaryLit">ಈ) ಪೂರಕ ಸಾಹಿತ್ಯದ ಉಪಯೋಗ:</label>
+                    <input type="text" id="supplementaryLit" name="supplementaryLit">
                 </div>
-                <div class="footer-row">
-                    <div>ಆಧಾರ್ ಕಾರ್ಡ್ ಸಂಖ್ಯೆ : <input type="text" style="width: 150px;"></div>
-                    <div>ಪೋಷಕರ ವಿಳಾಸ : <input type="text" style="width: 190px;"></div>
+                <div class="form-group">
+                    <label for="tlmUsage">ಉ) ಪಾಠೋಪಕರಣಗಳ ಉಪಯೋಗ (TLM):</label>
+                    <input type="text" id="tlmUsage" name="tlmUsage">
                 </div>
-                <div>
-                    ವೈಯಕ್ತಿಕ ದೂರವಾಣಿ ಸಂಖ್ಯೆ : <input type="text" style="width: 170px;">
+                <div class="form-group">
+                    <label for="blackboardUse">ಊ) ಕಪ್ಪು ಹಲಗೆಯ ಬಳಕೆ:</label>
+                    <input type="text" id="blackboardUse" name="blackboardUse">
+                </div>
+                <div class="form-group">
+                    <label for="communication">ಋ) ಪರಿಣಾಮಕಾರಿ ಸಂವಹನ:</label>
+                    <input type="text" id="communication" name="communication">
                 </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label>ಎ) ಗೃಹ ಪಾಠ ತಿದ್ದುವಿಕೆ:</label>
+                <div class="inline-inputs">
+                    <input type="text" id="hwDetail" name="hwDetail" placeholder="ವಿವರ">
+                    <input type="text" id="hwCount" name="hwCount" placeholder="ಸಂಖ್ಯೆ">
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="praisePoints">10. ಬೋಧನೆಯಲ್ಲಿನ ಪ್ರಶಂಸನೀಯ ಅಂಶಗಳು:</label>
+                <textarea id="praisePoints" name="praisePoints" placeholder="ಪ್ರಶಂಸನೀಯ ಅಂಶಗಳನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ..."></textarea>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="suggestions">11. ಮೇಲ್ವಿಚಾರಣೆಯಲ್ಲಿ ನೀಡಿದ ಸಲಹೆಗಳು:</label>
+                <textarea id="suggestions" name="suggestions" placeholder="ಸಲಹೆಗಳನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ..."></textarea>
+            </div>
+
+            <div class="signature-section">
+                <div class="signature-box">
+                    <label>ಶಿಕ್ಷಕರ ಸಹಿ</label>
+                    <input type="text" placeholder="ಸಹಿ">
+                </div>
+                <div class="signature-box">
+                    <label>ಶಾಲಾ ಮುಖ್ಯಸ್ಥರ ಸಹಿ</label>
+                    <input type="text" placeholder="ಹೆಸರು ಮತ್ತು ಮೊಹರು">
+                </div>
+            </div>
+        </form>
     </div>
+
+    <div class="action-buttons">
+        <button type="button" class="btn btn-save" onclick="saveData()">Save Auto</button>
+        <button type="button" class="btn btn-print" onclick="window.print()">Print / PDF</button>
+        <button type="button" class="btn btn-reset" onclick="resetForm()">Reset</button>
+    </div>
+
+    <div class="no-print" style="text-align:center;margin:15px 0;">
+      <a href="https://bilingualmediumschools.blogspot.com/2026/04/home-page.html"
+         target="_blank"
+         style="display:inline-block;
+                background:#1565c0;
+                color:#fff;
+                text-decoration:none;
+                padding:10px 18px;
+                border-radius:8px;
+                font-weight:bold;
+                font-size:16px;">
+        <br> ರಚನೆ: ಮನೋಹರ್ ಆರ್‌ ಕೆ.ಜಿ.ಎಫ್<br>
+        🌐 School Resource Centre – Click Here to Visit
+      </a>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('observationForm');
+
+    function saveData() {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        localStorage.setItem('hm_lesson_obs_data', JSON.stringify(data));
+        alert('ಮಾಹಿತಿಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಉಳಿಸಲಾಗಿದೆ! (Data Saved)');
+    }
+
+    function loadData() {
+        const savedData = localStorage.getItem('hm_lesson_obs_data');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            for (const key in data) {
+                if (form.elements[key]) {
+                    form.elements[key].value = data[key];
+                }
+            }
+        }
+    }
+
+    function resetForm() {
+        if (confirm('ನೀವು ಎಲ್ಲಾ ಕ್ಷೇತ್ರಗಳನ್ನು ಮರುಹೊಂದಿಸಲು (Reset) ಬಯಸುವಿರಾ?')) {
+            form.reset();
+            localStorage.removeItem('hm_lesson_obs_data');
+        }
+    }
+
+    window.onload = function() {
+        loadData();
+    };
+
+    setInterval(() => {
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        localStorage.setItem('hm_lesson_obs_data', JSON.stringify(data));
+    }, 30000);
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-@media print{
-  .no-print{
-    display:none !important;
-  }
-}
-</style>
-
-<div class="no-print" style="text-align:center;margin:15px 0;">
-  <a href="https://bilingualmediumschools.blogspot.com/2026/04/home-page.html"
-     target="_blank"
-     style="display:inline-block;
-            background:#1565c0;
-            color:#fff;
-            text-decoration:none;
-            padding:10px 18px;
-            border-radius:8px;
-            font-weight:bold;
-            font-size:16px;">
-<br> ರಚನೆ: ಮನೋಹರ್ ಆರ್‌ ಕೆ.ಜಿ.ಎಫ್<br>
-    🌐 School Resource Centre – Click Here to Visit
-  </a>
-</div>
